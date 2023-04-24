@@ -1,33 +1,51 @@
 #include "sort.h"
 
 /**
- * selection_sort - selection sort algorithm
- * @array: array to sort
- * @size: size of array
+ * swap - Swap values of start and next index.
+ * @array: the array to work in.
+ * @start: start point of the array.
+ * @min: value to swap with start point.
+ * Return: nothing.
  */
+void swap(int *array, size_t start, size_t min)
+{
+	int a, b;
 
+	a = array[start];
+	b = array[min];
+
+	array[start] = b;
+	array[min] = a;
+}
+
+/**
+ * selection_sort - Sort an array with selection algorithm.
+ * @array: the array to sort.
+ * @size: size of the array.
+ * Return: nothing.
+ */
 void selection_sort(int *array, size_t size)
 {
-	size_t i, i2;
-	int min, tmp, idx;
+	size_t index = 0, start = 0, min = 0;
 
-	for (i = 0, i < size; i++)
+	if (!array || size < 2)
+		return;
+
+	while (start < size)
 	{
-		min = array[i]
-			for (i2 = i + 1; i2 < size; i2++)
+		min = start;
+		index = start + 1;
+		while (index < size)
 		{
-			if (min > array[i2])
-			{
-				min = array[i2];
-				idx = i2;
-			}
+			if (array[index] < array[min])
+				min = index;
+			index++;
 		}
-		if (min != array[i])
+		if (min != start)
 		{
-			tmp = array[i];
-			array[i] = min;
-			array[idx] = tmp;
+			swap(array, start, min);
 			print_array(array, size);
 		}
+		start++;
 	}
 }
