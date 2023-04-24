@@ -1,22 +1,19 @@
 #include "sort.h"
 
 /**
- * swap - Swap values of start and next index.
- * @array: the array to work in.
- * @start: start point of the array.
- * @min: value to swap with start point.
- * Return: nothing.
+ * swap_ints - Swap two integers in an array.
+ * @a: The first integer to swap.
+ * @b: The second integer to swap.
  */
-void swap(int *array, size_t start, size_t min)
+void swap_ints(int *a, int *b)
 {
-	int a, b;
+	int tmp;
 
-	a = array[start];
-	b = array[min];
-
-	array[start] = b;
-	array[min] = a;
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
+
 
 /**
  * selection_sort - Sort an array with selection algorithm.
